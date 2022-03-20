@@ -7,7 +7,7 @@ config = {
     'host':'127.0.0.1',
     'user':'root',
     'database':'LemGUI',
-    'password':'6wdGPPpOe!'
+    'password':''
 }
 try:
     dbConnect = connect(**config)
@@ -29,8 +29,8 @@ def printSelect(x):
     print("\n\n")
     
 
-descRequeteCopy = descRequete.copy()
 while exi>0:
+    print("\n\t`-`-`-`-`-`-`-`-`-MENU-`-`-`-`-`-`-`-`-`-`-\n")
     for key in descRequete.keys():
         print(key,':',descRequete[key],"\n")
     choix = input("QUE DESIREZ VOUS ? \n")
@@ -56,7 +56,8 @@ while exi>0:
                 printSelect(m)
             elif choix2 in ['R','r']:
                 exi_e = -1
-                descRequete = descRequeteCopy
+                descRequete = dejaExecuter|descRequete
+                dejaExecuter.clear()
                 cleanTerminal()
                 exi = 1
             elif choix2 in ['Q','q']:
@@ -65,7 +66,7 @@ while exi>0:
                 print("Bye")
                 choix = choix2
     elif choix in ['R','r']:
-        descRequete = descRequeteCopy
+        descRequete = dejaExecuter|descRequete
         dejaExecuter.clear()
         cleanTerminal()
         exi = 1
